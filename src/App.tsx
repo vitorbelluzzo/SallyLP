@@ -18,16 +18,23 @@ function App() {
           src={cardDesktop}
           className="hidden lg:block w-full h-full"
           alt="Card Desktop"
+          loading="lazy"
         />
 
         <div className=" flex flex-col p-6 bottom-20  ">
-          <img src={embreve} className=" lg:hidden w-80 p-4  " alt="" />
+          <img
+            src={embreve}
+            className="lg:hidden w-80 p-4"
+            alt="Em breve"
+            loading="lazy"
+          />
 
           {/* Exibir no mobile (<1024px) */}
           <img
             src={cardMobile}
             className="block lg:hidden p-3"
             alt="Card Mobile"
+            loading="lazy"
           />
         </div>
       </div>

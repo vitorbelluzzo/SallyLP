@@ -1,53 +1,37 @@
-import { useEffect, useState } from "react";
 import "./App.css";
-// import SallyPromoCard from "./components/card";
+import logo from "./assets/logo.svg";
+import cardDesktop from "./assets/card.svg";
+import cardMobile from "./assets/cardmobile.svg"; // Imagem para telas menores
+import embreve from "./assets/embrevenovidades.svg";
 
 function App() {
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 640);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 640);
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
   return (
-    // <div
-    //   style={{
-    //     backgroundImage: "",
-    //     backgroundSize: "cover",
-    //     backgroundPosition: "center",
-    //     backgroundRepeat: "no-repeat",
-    //     height: "100vh",
-    //     width: "100vw",
-    //     maxWidth: "2560px", // Limita a largura máxima
-
-    //     margin: "0 auto", // Centraliza a div se necessário
-    //   }}
-    //   className=" flex flex-col items-center  justify-center bg-no-repeat w-full  py-3 px-1
-    //   h-full bg-center bg-auto bg-[url('/assets/bgdesktop.png')] overflow-hidden "
-    // >
-    //   <div className="gap-10 flex flex-col">
-    //     <h1 className=" text-[#AB4154] text-3xl font-bold">
-    //       EM BREVE <br />
-    //       NOVIDADES...
-    //     </h1>
-    //     <SallyPromoCard />
-    //   </div>
-    // </div>
-    <div>
-      {isMobile ? (
+    <>
+      <div className="max-w-7xl mx-auto   ">
+        <div className=" h-30 flex items-center   ">
+          <img src={logo} className="w-auto lg:h-32 h-20 " alt="" />
+        </div>
+      </div>
+      <div className="flex items-center justify-center  max-w-xl mx-auto ">
+        {/* Exibir no desktop (≥1024px) */}
         <img
-          src="/assets/bgmobile.jpg"
-          alt="Mobile"
-          className="w-full max-h-vw object-cover overflow-hidden"
+          src={cardDesktop}
+          className="hidden lg:block w-full h-full"
+          alt="Card Desktop"
         />
-      ) : (
-        <img src="/public/assets/imgdktp.svg" className="w-full h-fit" />
-      )}
-    </div>
+
+        <div className=" flex flex-col p-6 bottom-20  ">
+          <img src={embreve} className=" lg:hidden w-80 p-4  " alt="" />
+
+          {/* Exibir no mobile (<1024px) */}
+          <img
+            src={cardMobile}
+            className="block lg:hidden p-3"
+            alt="Card Mobile"
+          />
+        </div>
+      </div>
+    </>
   );
 }
 
